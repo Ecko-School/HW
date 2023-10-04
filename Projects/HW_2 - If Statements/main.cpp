@@ -32,6 +32,8 @@ int main()
     int integer2;
     int advancedInt;
     int comparisonInt = 0; // In this case, zero (For the greater/less/equal to)
+
+    int minute = 60; // This was already here, ignore the push
     const float num1 = 10.39;
     const float num2 = 4.203;
 
@@ -71,7 +73,7 @@ int main()
         cout << "False" << endl; // If its not greater than 10 or isnt even
     }
 
-    cout << advancedInt << " * 60 = " << advancedInt * 60 << endl; // I think one minute is 60 seconds, might be wrong who knows
+    cout << advancedInt << " * 60 = " << advancedInt * minute << endl; // I think one minute is 60 seconds, might be wrong who knows
 
     return 0;
 }
