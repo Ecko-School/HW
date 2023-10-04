@@ -33,28 +33,28 @@ int main()
     int advancedInt;
     int comparisonInt = 0; // In this case, zero (For the greater/less/equal to)
 
-    int minute = 60; // This was already here, ignore the push
+    int minute = 60; // Define one minute, in seconds.
     const float num1 = 10.39;
     const float num2 = 4.203;
 
     // function
-    cout << "Please input an integer: ";
-    cin >> integer1;
-    cout << "Please input another integer: ";
-    cin >> integer2;
-    cout << "Your number is " << integer1 + integer2 << endl;
-    cout <<  "Random numbers multiplied: "<<num1 * num2 << endl;
-    cout << "Please input another integer: ";
-    cin >> advancedInt;
+    cout << "Please input an integer: "; // Ask for the first num
+    cin >> integer1; // Ask for first num input
+    cout << "Please input another integer: "; // Ask for second num
+    cin >> integer2; // Ask for second num input
+    cout << "Your number is " << integer1 + integer2 << endl; // Addition of both numbers
+    cout <<  "Random numbers multiplied: "<<num1 * num2 << endl; // Random numbers mult. printed to console
+    cout << "Please input another integer: "; // Ask for another int
+    cin >> advancedInt; // Input int
     // advIntStuff
-    if(isEven(advancedInt) == true ) {
-        cout << advancedInt << " is even." << endl;
+    if(isEven(advancedInt) == true ) { // Use isEven() to make it easier in if statement
+        cout << advancedInt << " is even." << endl; // Print even if even
     } else
     {
-        cout << advancedInt << " is odd." << endl;
+        cout << advancedInt << " is odd." << endl; // Print odd if odd
     }
 
-    if (advancedInt > comparisonInt )
+    if (advancedInt > comparisonInt ) // If the number is greater than the comparison int (Can be changed to something else above)
     {
         cout << advancedInt << " is greater than " << comparisonInt << endl;
     } else if( advancedInt < comparisonInt)
@@ -65,7 +65,7 @@ int main()
         cout << advancedInt << " is equal to " << comparisonInt << endl;
     }
 
-    if(advancedInt > 10 && isEven(advancedInt) == true)
+    if(advancedInt > 10 && isEven(advancedInt) == true) // If adv is greater than 10 AND is even
     {
         cout << "True" << endl; // If its greater than 10 and even
     } else
