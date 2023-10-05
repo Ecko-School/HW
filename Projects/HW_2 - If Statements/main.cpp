@@ -1,8 +1,6 @@
 #include <iostream>
 
 using namespace std;
-
-
 /*
 INSTRUCTION:
 Ask for 2 int, add them together and output answer
@@ -19,7 +17,7 @@ bool isEven(int num) // function for checking if a number is even
     if(num % 2 == 0) // if the remainder of num / 2 is 0, its even.
     {
         return true;
-    } else if(num % 2 != 0) // Other way around
+    } else
     {
         return false;
     }
@@ -47,7 +45,8 @@ int main()
     cout << "Please input another integer: "; // Ask for another int
     cin >> advancedInt; // Input int
     // advIntStuff
-    if(isEven(advancedInt) == true ) { // Use isEven() to make it easier in if statement
+    const bool evenCheck = isEven(advancedInt)
+    if(evenCheck == true ) { // Use isEven() to make it easier in if statement
         cout << advancedInt << " is even." << endl; // Print even if even
     } else
     {
@@ -65,7 +64,7 @@ int main()
         cout << advancedInt << " is equal to " << comparisonInt << endl;
     }
 
-    if(advancedInt > 10 && isEven(advancedInt) == true) // If adv is greater than 10 AND is even
+    if(advancedInt > 10 && evenCheck == true) // If adv is greater than 10 AND is even
     {
         cout << "True" << endl; // If its greater than 10 and even
     } else
