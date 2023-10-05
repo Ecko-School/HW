@@ -45,7 +45,7 @@ int main()
     cout << "Please input another integer: "; // Ask for another int
     cin >> advancedInt; // Input int
     // advIntStuff
-    const bool evenCheck = isEven(advancedInt)
+    const bool evenCheck = isEven(advancedInt);
     if(evenCheck == true ) { // Use isEven() to make it easier in if statement
         cout << advancedInt << " is even." << endl; // Print even if even
     } else
