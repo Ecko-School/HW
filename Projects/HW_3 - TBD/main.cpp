@@ -21,69 +21,79 @@ If guess is correct:
 
 */
 
+//Corrections:
+//    Dont apply javascript camelcase to functions ;( [X]
+//    Switch CheckNum() from returning int to bool [X]
+
+
+
 //------------------------------ FUNCTIONS -------------------------------
-int randNum(int maxNum)
+int RandNum(int maxNum)
 {
     srand(time(NULL)); // Randomize seed in random
-    return rand() % maxNum+1; // Return random int with a max of 100
+    return rand() % maxNum+1; // Return random int with a max, defined by maxNum
 }
 
-int checkNum(int answer, int number ) // Answer is what the player inputs, number is the random num
+bool CheckNum(int answer, int number ) // Answer is what the player inputs, number is the random num
 {
     if(answer == number)
     {
-        return 1; // 1 is "Perfect"
+        return true; // return true if the player gets the number correct
     }
-    else if(answer > number)
+    else if(answer > number || answer < number)
     {
-        return 2; // 2 is "Too Much"
-    }
-    else if(answer < number)
-    {
-        return 0; // 0 is "Too Little"
+        return false; // return false if the player gets the number incorrect
     }
 
 }
 
-bool debug = false; // If true, you have the ability to change the maxNum (default is 100), and it will also show you the answer
+bool debugMode = false; // If true, you have the ability to change the maxNum (default is 100), and it will also show you the answer
 
 //------------------------------ MAIN PROJ -------------------------------
 
 int main ()
 {
-    int random_number = randNum(100);
-     // Measure passes for the while loop (One thing that took me half an hour to realize is DONT PUT THIS IN THE WHILE LOOP AS IT WILL KEEP RETURNING IT TO 0 EVERY TIME IT RUNS)
-    if (debug == true)
+    int random_number = RandNum(100); // Get random number with a max of 100 (PUT THIS BEFORE THE IF(DEBUG)
+     // Measure passes for the while loop (One thin// Use randNum() function above to get a random numberg that took me half an hour to realize is DONT PUT THIS IN THE WHILE LOOP AS IT WILL KEEP RETURNING IT TO 0 EVERY TIME IT RUNS)
+    int passes = 0;
+    int playerNum; // init the players input number
+    bool guessedCorrectly = false; // Use for while loop activity
+
+    if (debugMode == true)
     {
         int maxNum; // Init maxNum for game
         cout << "Set maximum number: "; // Ask for maxNum
         cin >> maxNum; // Ask for maxNum input
-        random_number = randNum(maxNum); // Override the randomNum if debug is enabled.
+        random_number = RandNum(maxNum); // Override the randomNum if debug is enabled.
         cout << "number: " << random_number << endl; // Print answer
     }
-     // Use randNum() function above to get a random number
-    int playerNum; // init the players input number
-    bool guessedCorrectly = false; // Use for while loop activity
-    int passes = 0;
+
     while(guessedCorrectly == false) // WHILE LOOP
     {
         passes = passes + 1;
         cout << "Please input an integer that is 0 - 100 : "; // Ask for int 0-100
         cin >> playerNum; // init players input
-        int check = checkNum(playerNum, random_number); // Check if players answer compared to random num is equal, greater, or less than.
-        if (check == 1)
+        int check = CheckNum(playerNum, random_number); // Check if players answer compared to random num is equal, greater, or less than.
+        if (check == true)
         {
-            cout <<"Winner Winner Chicken Dinner!!! It took you " << passes << " guesses to get it correctly, good job!" << endl;
+            cout <<"Winner Winner Chicken Dinner!!!" << endl;
             guessedCorrectly = true; // Change guessedCorrectly to true, closing the while loop.
         }
-        else if (check == 2) // If check re
+        else if (check == false && playerNum > random_number) // If the guessed number is NOT correct, AND the number is larger, output too high.
         {
             cout << "Too high, try again!" << endl;
         }
-        else if (check == 0)
+        else if (check == false && playerNum < random_number) // If the guessed number is NOT correct, AND the number is smaller, output too low.
         {
             cout << "Too low, try again!" << endl;
         }
     }
+    if(passes <= 1) { // I only added this because I didnt like seeing 1 guesses, 1 guess(es), or 10 guess(es) too wack looking
+        cout << "It took you 1 guess to get it correctly, good job!" << endl; // If correct in one guess, print this
+    } else
+    {
+        cout << "It took you " << passes << " guesses to get it correctly, good job!" << endl; // If correct with more than 1 guess, print this
+    }
+
   return 0;
 }
